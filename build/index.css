@@ -18,6 +18,7 @@ div.sg-sidebar {
   box-sizing: border-box;
   padding: 30px;
   overflow-y: auto;
+  background: white;
 }
 
 div.sg-title {
