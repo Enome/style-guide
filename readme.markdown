@@ -6,13 +6,15 @@ This is a client-side app that you can use to create a style guide from html and
 
 ## Installation
 
-- Create an html file.
-- Reference the style guide css and javascript file.
+- Create a html file or use [this file](https://raw.github.com/Enome/style-guide/master/build/index.html).
+- Download the style guide [css](https://raw.github.com/Enome/style-guide/master/build/index.css) and [javascript](https://raw.github.com/Enome/style-guide/master/build/index.js)
+- Reference the style guide css and javascript file in your html file.
 - Create a `<div id='sg'></div>` tag.
 - Include your own css.
 - Include your own html.
 - Add bookmarks (optional).
-- Serve your html file with an http server.
+- Enable live reloading (optional)
+- Serve your html file with a http server.
 
 ### Include your own css
 
@@ -52,24 +54,29 @@ This allows you to load css selectors inside the search field from the sidebar. 
 </script>
 ```
 
+### Enable live reloading
+
+If you use style guides for development you can turn on live reloading.
+
+```html
+window.live_reloading = true;
+```
+
+It's recommended that you disable it when you publish your style guide online since every visitor will request all your css and html every 1500ms.
+
 ### Serving html
 
-Because the app does XMLHttpRequests you need to serve your html file with an http server otherwise you'll get cross origin errors because of file://. If you need a simple server I can recommend `npm install http-server -g`. Once installed you can `http-server -p 3000 .` and it will serve the current directory at port 3000.
+Because the app does XMLHttpRequests you need to serve your html file with a http server otherwise you'll get cross origin errors because of `file://`. 
 
-## Usage
-
-You can show components by searching for them with a css selector. The application does live reloading of the html and css files and you should only refresh the page if you made changes to the settings.
+If you need a simple web server I can recommend `npm install http-server -g`. 
+Once installed you can `http-server -p 3000 .` and it will serve the current directory at port 3000.
 
 ## Todo
 
-- Show html pane.
-- Show colors pane.
+- Show html code.
+- Show colors.
 - Show fonts used.
 - Remember the last search between refreshes.
-
-## Development
-
-If you want to contribute or adjust the application to your needs you can use `server.js` for local development. It will browserify the application on request so you don't have to run grunt all the time.
 
 ## Build
 

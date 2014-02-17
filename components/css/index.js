@@ -36,7 +36,7 @@ var css = {
 
   watcher: function () {
 
-    setInterval(function () {
+    var intervaller = setInterval(function () {
 
       css.getCssFiles(function (files) {
 
@@ -55,6 +55,10 @@ var css = {
 
       });
       
+      if (!window.live_reloading) {
+        clearInterval(intervaller);
+      }
+
     }, 1000);
     
   }

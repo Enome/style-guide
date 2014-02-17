@@ -1,13 +1,13 @@
 module.exports = function (grunt) {
 
-
   grunt.initConfig({
     clean: ['build/'],
 
     copy: {
       build: {
         files: [
-          { src: 'index.css', dest: 'build/'}
+          { src: 'index.css', dest: 'build/'},
+          { src: 'starter.html', dest: 'build/index.html'},
         ] 
       } 
     },

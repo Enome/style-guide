@@ -49,7 +49,7 @@ var functions = {
 
     var changed = false;
 
-    setInterval(function () {
+    var intervaller = setInterval(function () {
 
       functions.requestHtml(urls, function (html) {
 
@@ -65,6 +65,10 @@ var functions = {
           functions.html = html;
           changed = false;
           mediator.emit('html:change');
+        }
+
+        if (!window.live_reloading) {
+          clearInterval(intervaller);
         }
 
       });

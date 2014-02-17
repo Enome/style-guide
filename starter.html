@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+    <!-- The title is used for the sidebar as well -->
+    <title>Your style guide name</title>
+
+    <!-- Include your css (multiple files are allowed) -->
+    <link href='your.css' rel='stylesheet' type='text/css' />
+
+    <!-- Include your html html (multiple files are allowed) -->
+    <link href='your.html' type='text/html' />
+
+    <!-- Style Guide css -->
+    <link href='index.css' rel='stylesheet' type='text/css' />
+
+  </Head>
+
+  <body>
+
+    <!-- Style guide div container with id sg (required) -->
+    <div id='sg'></div>
+
+    <script>
+
+      // You can bookmark selectors
+
+      window.bookmarks = {
+        'Foo': [ 
+          { name: 'bar',  selector: '.bar' },
+        ],
+
+        'Bar': [ 
+          { name: 'Foo',  selector: '.foo' },
+        ],
+      };
+
+      // Enable css/html live reloading (disable this when you publish)
+
+      window.live_reloading = true;
+
+    </script>
+
+    <!-- Style guide script --> 
+    <script src='index.js'></script>
+
+  </body>
+
+</html>
