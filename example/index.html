@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+    <!-- The title is used for the sidebar as well -->
+    <title>My Style Guide</title>
+
+    <!-- Include your css (multiple files are allowed) -->
+    <link href='bootstrap.css' rel='stylesheet' type='text/css' />
+
+    <!-- Include your html html (multiple files are allowed) -->
+    <link href='bootstrap.html' type='text/html' />
+
+    <!-- Style Guide css -->
+    <link href='../index.css' rel='stylesheet' type='text/css' />
+
+  </Head>
+
+  <body>
+
+    <!-- Style guide div container (required) -->
+    <div id='sg'></div>
+
+    <script>
+
+      // You can bookmark selectors
+
+      window.bookmarks = {
+        'Buttons': [ 
+          { name: 'All',  selector: '.btn' },
+          { name: 'Default',  selector: '.btn-default' },
+          { name: 'Primary',  selector: '.btn-primary' },
+          { name: 'Success',  selector: '.btn-success' },
+          { name: 'Info',  selector: '.btn-info' },
+          { name: 'Warning',  selector: '.btn-warning' },
+          { name: 'Danger',  selector: '.btn-danger' },
+          { name: 'Link',  selector: '.btn-link' },
+        ],
+
+        'Tables': [ 
+          { name: 'All',  selector: 'table' },
+          { name: 'Default',  selector: 'table:not(.table-striped):not(.table-bordered)' },
+          { name: 'Table Stripped',  selector: '.table-striped' },
+          { name: 'Table Bordered',  selector: '.table-bordered' },
+        ],
+      };
+    </script>
+
+    <!-- Style guide script --> 
+    <script src='../index.js'></script>
+
+  </body>
+
+</html>

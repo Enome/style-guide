@@ -1,0 +1,145 @@
+div.sg-main {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+div.sg-sidebar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 260px;
+  border-right: 1px solid #F5F3EF;
+  box-sizing: border-box;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+div.sg-title {
+  text-transform: uppercase;
+  color: #878787;
+  font-weight: 700;
+  font-family: lato;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+input.sg-form-control {
+  border: 1px solid #DDDDDD;
+  border-radius: 0;
+  height: 25px;
+  background: white;
+  font-size: 14px;
+  font-family: lato;
+  line-height: 25px;
+  box-shadow: none;
+  margin: 0;
+  padding: 0 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+div.sg-actions {
+  margin: 20px 0;
+}
+
+div.sg-btn {
+  text-transform: uppercase;
+  display: inline-block;
+  background: #F5F3EF;
+  font-size: 9px;
+  padding: 3px 10px;
+  color: #878787;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: lato;
+  margin: 0 5px 5px 0;
+  opacity: .5;
+}
+
+div.sg-btn:hover {
+  opacity: 1;
+}
+
+div.sg-btn-selected {
+  opacity: 1;
+}
+
+div.sg-results {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 260px;
+  right: 0;
+  background: #FAF9F7;
+  box-sizing: border-box;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+div.sg-result {
+  margin-bottom: 30px;
+}
+
+div.sg-panel {
+  background: white;
+  padding: 80px 30px 40px 30px;
+  position: relative;
+  border-radius: 5px;
+  box-shadow: 0 3px 0px #F5F3EF;
+}
+
+div.sg-panel-title {
+  position: absolute;
+  left: 0;
+  top: 20px;
+  background: #FAF9F7;
+  text-transform: uppercase;
+  padding: 5px 20px;
+  font-size: 11px;
+  color: #B2A185;
+  border-bottom-right-radius: 3px;
+  border-top-right-radius: 3px;
+  font-family: lato;
+}
+
+div.sg-panel-markup {
+  position: relative;
+}
+
+div.sg-panel-markup > *:first-child {
+  position: relative;
+}
+
+div.sg-bookmarks {
+  font-family: lato;
+}
+
+div.sg-bookmarks-category {
+  margin-bottom: 40px;
+}
+
+div.sg-bookmarks-category-title {
+  text-transform: uppercase;
+  color: #878787;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+div.sg-bookmarks-bookmark {
+  color: #AAAAAA;
+  cursor: pointer;
+  margin-bottom: 5px;
+  font-size: 13px;
+}
+
+div.sg-bookmarks-bookmark:hover, div.sg-bookmarks-bookmark-selected {
+  color: #878787;
+}
+
+div.sg-bookmarks-bookmark-selected {
+  font-weight: bold;
+}
