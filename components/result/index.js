@@ -68,6 +68,8 @@ var Result = React.createClass({
 
   render: function () {
 
+    var html = this.props.html;
+
     var colors = this.state.colors.map(function (color) {
 
       var value = color.hexString();
@@ -88,12 +90,12 @@ var Result = React.createClass({
       <div className='sg-result'>
         <div className='sg-panel'>
           <div className='sg-panel-title'>Component</div>
-          <div className='sg-panel-markup' dangerouslySetInnerHTML={{__html: this.props.html}} />
+          <div className='sg-panel-markup' dangerouslySetInnerHTML={{__html: html}} />
         </div>
 
         <div className='sg-panel' style={{ display: this.props['show-html'] ? 'block' : 'none' }}>
           <div className='sg-panel-title'>Html</div>
-          <pre className='sg-code' dangerouslySetInnerHTML={{ __html: highlight.highlight('html', this.props.html).value }} />
+          <pre className='sg-code' dangerouslySetInnerHTML={{ __html: highlight.highlight('html', html).value }} />
         </div>
 
         <div className='sg-panel' style={{ display: this.props['show-colors'] ? 'block' : 'none' }}>

@@ -100,7 +100,15 @@ var functions = {
       
     });
 
-    callback(_.compact(_.flatten(result)));
+    result = _.compact(_.flatten(result));
+
+    // Remove the namespace that IE and FF adds
+
+    result = result.map(function (html) {
+      return html.replace('xmlns="http://www.w3.org/1999/xhtml" ', '');
+    });
+
+    callback(result);
     
   },
 
