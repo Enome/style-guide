@@ -1,6 +1,7 @@
 var _ = require('lodash');
 var uuid = require('uuid');
 var async = require('async');
+var mediator = require('../mediator');
 
 var css = {
   
@@ -46,6 +47,7 @@ var css = {
 
             var link = document.querySelector('link[href^="' + key + '"]');
             link.setAttribute('href', key + '?' + uuid.v4());
+            mediator.emit('css:change');
 
           }
           

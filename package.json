@@ -15,6 +15,10 @@
     "mediator-js": "~0.9.6",
     "react-tools": "~0.8.0",
     "reactify": "~0.7.0",
-    "uuid": "~1.4.1"
+    "uuid": "~1.4.1",
+    "grunt-contrib-concat": "~0.3.0",
+    "highlight.js": "~8.0.0",
+    "color": "~0.5.0",
+    "grunt-autoprefixer": "~0.6.5"
   }
 }

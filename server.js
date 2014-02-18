@@ -10,6 +10,6 @@ app.use(express.logger('dev'));
 app.get('/index.js', browserify('./index.js', { transform: [ 'reactify'] }));
 app.use(express.static(__dirname));
 
-http.createServer(app).listen(3000, function () {
+http.createServer(app).listen(3001, function () {
   console.log('3000');
 });

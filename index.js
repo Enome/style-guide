@@ -2,7 +2,7 @@
 
 var React = require('./components/react');
 var Search = require('./components/search');
-var Result = require('./components/result');
+var Results = require('./components/results');
 var Bookmarks = require('./components/bookmarks');
 
 var App = React.createClass({
@@ -13,8 +13,10 @@ var App = React.createClass({
     this.setState({ search: event.target.value });
   },
 
-  toggleMerge: function () {
-    this.setState({ merge: !this.state.merge });
+  toggle: function (prop) {
+    var state = {};
+    state[prop] = !this.state[prop];
+    this.setState(state);
   },
 
   selectBookmark: function (bookmark) {
@@ -34,7 +36,15 @@ var App = React.createClass({
   },
 
   getInitialState: function () {
-    return { search: '', title: 'Style Guide', merge: false };
+
+    return { 
+      search: '', 
+      title: 'Style Guide', 
+      merge: false,
+      show_html: false,
+      show_colors: false,
+    };
+
   },
 
 
@@ -50,13 +60,25 @@ var App = React.createClass({
           <Search onChange={this.search} search={this.state.search} />
 
           <div className='sg-actions'>
-            <div className={ 'sg-btn ' + ( this.state.merge ? 'sg-btn-selected' : '' ) } onClick={this.toggleMerge}>Merge results</div>
+
+            <div className={ 'sg-btn ' + ( this.state.merge ? 'sg-btn-selected' : '' ) } onClick={this.toggle.bind(this, 'merge')}>
+              Merge results
+            </div>
+
+            <div className={ 'sg-btn ' + ( this.state.show_html ? 'sg-btn-selected' : '' ) } onClick={this.toggle.bind(this, 'show_html')}>
+              Show html
+            </div>
+
+            <div className={ 'sg-btn ' + ( this.state.show_colors ? 'sg-btn-selected' : '' ) } onClick={this.toggle.bind(this, 'show_colors')}>
+              Show colors
+            </div>
+
           </div>
 
           <Bookmarks onChange={this.selectBookmark} search={this.state.search} />
         </div>
 
-        <Result search={this.state.search} merge={this.state.merge} />
+        <Results search={this.state.search} merge={this.state.merge} show-html={this.state.show_html} show-colors={this.state.show_colors} />
 
       </div> 
     );

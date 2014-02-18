@@ -12,6 +12,20 @@ module.exports = function (grunt) {
       } 
     },
 
+    concat: {
+      build: {
+        src: [ 'styles/index.css', 'styles/highlight.css' ],
+        dest: 'build/index.css'
+      } 
+    },
+
+    autoprefixer: {
+      build: {
+        src: 'build/index.css',
+        dest: 'build/index.css'
+      }
+    },
+
     browserify: {
       build: {
         options: {
@@ -30,12 +44,16 @@ module.exports = function (grunt) {
   });
  
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-autoprefixer');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
   grunt.registerTask('default', [
     'clean',
+    'concat',
+    'autoprefixer',
     'copy',
     'browserify',
     'uglify'

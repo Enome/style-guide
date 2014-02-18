@@ -1,71 +1,110 @@
 /** @jsx React.DOM */
 
 var React = require('../react');
-var _ = require('lodash');
 
-//var functions = require('./functions');
+var highlight = require('highlight.js');
+var _ = require('lodash');
+var colors = require('../colors');
 var mediator = require('../mediator');
-var css = require('../css');
-var html = require('../html');
 
 var Result = React.createClass({
-  
 
-  // Lifecycle events
+  // Custom methods
 
-  componentWillReceiveProps: function (next) {
+  setColors: function () {
+
+    var html = this.getDOMNode().querySelector('.sg-panel-markup');
+
+    var children = Array.prototype.slice.call(html.getElementsByTagName('*'));
+
+    var clrs = _.unique(_.flatten(children.map(function (child) {
+      return colors.fromElement(child);
+    })));
+
+    clrs = clrs.map(function (color) {
+      return colors.rgbToHex(color); 
+    });
+
+    clrs = colors.sort(clrs);
+
+    if (!_.isEqual(this.state.colors, clrs)) {
+      this.setState({ colors: clrs });
+    }
+
+  },
+
+  cssChangeHandler: function () {
 
     var self = this;
 
-    html.querySelector(next.search, function (html) {
-      self.setState({ html: html });
-    });
-
-    mediator.on('html:change', function () {
-      html.querySelector(next.search, function (html) {
-        self.setState({ html: html });
-      });
-    });
+    // Give the html some time to update
     
+    setTimeout(function () {
+      self.setColors();  
+    }, 100);
+
   },
+  
+  //Lifecycle Events
 
   componentDidMount: function () {
-    html.watcher();
-    css.watcher();
+    mediator.on('css:change', this.cssChangeHandler);
+    this.setColors();
+  },
+
+  componentWillUnmount: function () {
+    mediator.remove('css:change', this.cssChangeHandler);
+  },
+
+  componentDidUpdate: function () {
+    this.setColors();
   },
 
   getInitialState: function () {
-    return { html: [] };
+    return { colors: [] };
   },
 
-
-  // Render
+  //Render
 
   render: function () {
 
-    var html_list = this.state.html;
+    var colors = this.state.colors.map(function (color) {
 
-    if (this.props.merge) {
-      html_list = _.compact([html_list.join('\n')]);
-    }
+      var value = color.hexString();
 
-    var html = _.map(html_list, function (html) {
+      if (typeof color.rgb().a !== 'undefined') {
+        value = color.rgbString(); 
+      }
+
       return (
-
-        <div className='sg-result'>
-          <div className='sg-panel'>
-            <div className='sg-panel-title'>Component</div>
-            <div className='sg-panel-markup' dangerouslySetInnerHTML={{__html: html}} />
-          </div>
+        <div className='sg-color' title={value}>
+          <div className='sg-color-color' style={{ background: value }} />
+          <div className='sg-color-text'>{value}</div>
         </div>
-
       );
     });
 
     return (
-      <div className='sg-results'>{html}</div>
+      <div className='sg-result'>
+        <div className='sg-panel'>
+          <div className='sg-panel-title'>Component</div>
+          <div className='sg-panel-markup' dangerouslySetInnerHTML={{__html: this.props.html}} />
+        </div>
+
+        <div className='sg-panel' style={{ display: this.props['show-html'] ? 'block' : 'none' }}>
+          <div className='sg-panel-title'>Html</div>
+          <pre className='sg-code' dangerouslySetInnerHTML={{ __html: highlight.highlight('html', this.props.html).value }} />
+        </div>
+
+        <div className='sg-panel' style={{ display: this.props['show-colors'] ? 'block' : 'none' }}>
+          <div className='sg-panel-title'>Colors</div>
+          <div className='sg-colors'>
+            {colors}
+          </div>
+        </div>
+      </div>
     );
-    
+
   },
 
 });
