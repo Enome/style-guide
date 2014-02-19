@@ -73,10 +73,8 @@ Once installed you can `http-server -p 3000 .` and it will serve the current dir
 
 ## Todo
 
-- Show html code.
-- Show colors.
-- Show fonts used.
-- Remember the last search between refreshes.
+- Show fonts stats.
+- Use hash in url to link to selectors.
 
 ## Build
 
