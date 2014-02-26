@@ -15,6 +15,12 @@ var css = {
       return link.getAttribute('href');
     });
 
+    // Filter out external links
+
+    stylesheet_urls = _.filter(stylesheet_urls, function (url) {
+      return url.indexOf('http') === -1;
+    });
+
     async.reduce(stylesheet_urls, {}, function (memo, url, next) {
 
       url = url.match(/^[^?]+|$/)[0];
